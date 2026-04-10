@@ -52,7 +52,7 @@ temperature down). Cross-referencing across all three buses:
 - **D0 encoding:** same as XYE (byte[7] = T + 0x40)
 
 22–24 °C is plausible for a heating session. Offset 0x40 aligns with values
-documented in some Midea reverse-engineering references.
+documented in some Midea protocol research references.
 
 **To confirm:** capture a session with operator-logged setpoints (e.g. set to 20 °C,
 then 25 °C, then 30 °C) and verify the formula holds at the extremes.
