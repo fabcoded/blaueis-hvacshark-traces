@@ -88,7 +88,7 @@ Session 10 C/F flag interpretation — this session has no F switching.
 | 205-end  | no              | ECO not re-enabled |
 
 ECO at body[9] bit 4 in the 0xC0 response confirmed. Enabling Turbo disables
-ECO (consistent with protocol_serial.md).
+ECO (consistent with serial_protocol.md).
 
 Quicknote also says "setting temp disables eco!" — confirmed: the ECO flag
 disappears from 0xC0 responses after a temperature change is sent.

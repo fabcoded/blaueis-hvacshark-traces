@@ -40,7 +40,7 @@ or under-documented:
     - Fahrenheit: UART body[15] decimal nibble / mill1000 fahrenheits flag
     - Kelvin: Would need offset ~273 for 0C — check if any offset is near 273*2=546
               or if raw values make sense as decikelvin.
-    - UART 0xA0 alternative temp frames (OQ-18 in protocol_serial.md)
+    - UART 0xA0 alternative temp frames (OQ-18 in serial_protocol.md)
 
 Usage:
     python scan_xye_unknowns.py [session_dirs...]
