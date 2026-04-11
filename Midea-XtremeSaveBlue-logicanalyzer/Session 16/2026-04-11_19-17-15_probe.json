@@ -1,0 +1,596 @@
+{
+  "meta": {
+    "host": "192.168.210.30",
+    "port": 8765,
+    "timestamp": "2026-04-11_19-17-15",
+    "total_probes": 31,
+    "wait_per_probe_s": 1.5
+  },
+  "transcript": [
+    {
+      "index": 1,
+      "label": "cmd_0xb5_extended",
+      "tx_hex": "aa 0e ac a2 00 00 00 02 00 03 b5 01 00 4d 9c",
+      "tx_time": "19:17:17",
+      "responses": [
+        {
+          "rx_hex": "aa 35 ac 00 00 00 00 00 02 03 b5 08 12 02 01 01 14 02 01 01 15 02 01 01 16 02 01 00 1a 02 01 01 10 02 01 01 25 02 07 20 3c 20 3c 20 3c 00 24 02 01 01 01 00 20 40",
+          "rx_time": "19:17:17",
+          "msg_type": "0x03",
+          "body_hex": "b5 08 12 02 01 01 14 02 01 01 15 02 01 01 16 02 01 00 1a 02 01 01 10 02 01 01 25 02 07 20 3c 20 3c 20 3c 00 24 02 01 01 01 00",
+          "body_len": 42,
+          "body_tag": "0xB5",
+          "body_2": "0x12",
+          "body_3": "0x02"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "label": "cmd_0xb5_simple",
+      "tx_hex": "aa 10 ac bc 00 00 00 02 00 03 b5 01 01 01 21 00 aa",
+      "tx_time": "19:17:18",
+      "responses": [
+        {
+          "rx_hex": "aa 33 ac 00 00 00 00 00 02 03 b5 09 1e 02 01 01 13 02 01 01 22 02 01 00 19 02 01 00 39 00 01 01 42 00 01 01 09 00 01 01 0a 00 01 01 48 00 01 01 00 00 f4 10",
+          "rx_time": "19:17:19",
+          "msg_type": "0x03",
+          "body_hex": "b5 09 1e 02 01 01 13 02 01 01 22 02 01 00 19 02 01 00 39 00 01 01 42 00 01 01 09 00 01 01 0a 00 01 01 48 00 01 01 00 00",
+          "body_len": 40,
+          "body_tag": "0xB5",
+          "body_2": "0x1E",
+          "body_3": "0x02"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "label": "cmd_0x41",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 81 00 ff 03 ff 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 cb 0d",
+      "tx_time": "19:17:20",
+      "responses": [
+        {
+          "rx_hex": "aa 28 ac 00 00 00 00 00 02 03 c0 01 87 66 7f 7f 00 00 00 00 00 5c 4e 0b 00 03 00 00 00 00 00 00 00 01 00 00 00 00 00 d0 f2",
+          "rx_time": "19:17:20",
+          "msg_type": "0x03",
+          "body_hex": "c0 01 87 66 7f 7f 00 00 00 00 00 5c 4e 0b 00 03 00 00 00 00 00 00 00 01 00 00 00 00 00",
+          "body_len": 29,
+          "body_tag": "0xC0",
+          "body_2": "0x87",
+          "body_3": "0x66"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "label": "cmd_0x41_group4_power",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 44 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 76",
+      "tx_time": "19:17:22",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 44 00 01 19 f4 00 00 00 00 00 00 00 00 00 00 6e 00 00 f3 99",
+          "rx_time": "19:17:23",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 44 00 01 19 f4 00 00 00 00 00 00 00 00 00 00 6e 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x44"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "label": "cmd_0x41_group5",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 45 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 6a 8b",
+      "tx_time": "19:17:23",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 45 00 4f ed 1b 00 00 00 00 00 00 7c 07 00 b7 88 00 00 f6 f8",
+          "rx_time": "19:17:24",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 45 00 4f ed 1b 00 00 00 00 00 00 7c 07 00 b7 88 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x45"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "label": "cmd_0x41_ext",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 81 00 00 03 00 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4a 8c",
+      "tx_time": "19:17:25",
+      "responses": [
+        {
+          "rx_hex": "aa 0e ac 00 00 00 00 00 02 00 00 00 00 00 44",
+          "rx_time": "19:17:26",
+          "msg_type": "0x00",
+          "body_hex": "00 00 00",
+          "body_len": 3,
+          "body_tag": "0x00",
+          "body_2": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "label": "direct_subpage_0x01",
+      "tx_hex": "aa 0d ac a1 00 00 00 02 00 03 41 01 01 5e",
+      "tx_time": "19:17:27",
+      "responses": [
+        {
+          "rx_hex": "aa 0e ac 00 00 00 00 00 02 00 00 00 00 00 44",
+          "rx_time": "19:17:27",
+          "msg_type": "0x00",
+          "body_hex": "00 00 00",
+          "body_len": 3,
+          "body_tag": "0x00",
+          "body_2": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "label": "direct_subpage_0x02",
+      "tx_hex": "aa 0d ac a1 00 00 00 02 00 03 41 02 e3 7b",
+      "tx_time": "19:17:28",
+      "responses": [
+        {
+          "rx_hex": "aa 0e ac 00 00 00 00 00 02 00 00 00 00 00 44",
+          "rx_time": "19:17:29",
+          "msg_type": "0x00",
+          "body_hex": "00 00 00",
+          "body_len": 3,
+          "body_tag": "0x00",
+          "body_2": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "label": "B1_props_indoor_humidity+error_code_query+mode_query+tone_buzzer+no_wind_sense+wind_straight_avoid+self_clean+prevent_straight_wind",
+      "tx_hex": "aa 1d ac b1 00 00 00 02 00 03 b1 08 15 00 3f 00 41 00 1a 00 18 00 32 00 39 00 42 00 ee 66",
+      "tx_time": "19:17:30",
+      "responses": [
+        {
+          "rx_hex": "aa 31 ac 00 00 00 00 00 02 03 b1 08 15 00 00 00 3f 00 00 00 41 00 00 00 1a 00 00 01 00 18 00 00 00 32 00 00 00 39 00 00 01 00 42 00 00 01 01 00 fc f1",
+          "rx_time": "19:17:30",
+          "msg_type": "0x03",
+          "body_hex": "b1 08 15 00 00 00 3f 00 00 00 41 00 00 00 1a 00 00 01 00 18 00 00 00 32 00 00 00 39 00 00 01 00 42 00 00 01 01 00",
+          "body_len": 38,
+          "body_tag": "0xB1",
+          "body_2": "0x15",
+          "body_3": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "label": "B1_props_rate_select+wind_swing_ud_angle+wind_swing_lr_angle+pm25_value+operating_time+has_icheck+fresh_air+comfort",
+      "tx_hex": "aa 1d ac b1 00 00 00 02 00 03 b1 08 48 00 09 00 0a 00 0b 02 28 02 91 00 4b 00 ad 00 99 14",
+      "tx_time": "19:17:32",
+      "responses": [
+        {
+          "rx_hex": "aa 31 ac 00 00 00 00 00 02 03 b1 08 48 00 00 01 64 09 00 00 01 00 0a 00 00 01 00 0b 00 00 00 28 00 00 00 91 00 00 00 4b 00 00 00 ad 00 00 00 00 4b 9c",
+          "rx_time": "19:17:33",
+          "msg_type": "0x03",
+          "body_hex": "b1 08 48 00 00 01 64 09 00 00 01 00 0a 00 00 01 00 0b 00 00 00 28 00 00 00 91 00 00 00 4b 00 00 00 ad 00 00 00 00",
+          "body_len": 38,
+          "body_tag": "0xB1",
+          "body_2": "0x48",
+          "body_3": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "label": "B1_props_ieco_switch+high_temperature_monitor+cool_hot_sense+auto_prevent_straight_wind+intelligent_wind+child_prevent_cold_wind+little_angel+security",
+      "tx_hex": "aa 1d ac b1 00 00 00 02 00 03 b1 08 e3 00 47 00 21 00 26 02 34 00 3a 00 1b 02 29 00 01 a0",
+      "tx_time": "19:17:33",
+      "responses": [
+        {
+          "rx_hex": "aa 2f ac 00 00 00 00 00 02 03 b1 08 e3 00 00 00 47 00 00 00 21 00 00 00 26 00 00 00 34 00 00 00 3a 00 00 00 1b 00 00 01 00 29 00 00 00 00 48 fb",
+          "rx_time": "19:17:34",
+          "msg_type": "0x03",
+          "body_hex": "b1 08 e3 00 00 00 47 00 00 00 21 00 00 00 26 00 00 00 34 00 00 00 3a 00 00 00 1b 00 00 01 00 29 00 00 00 00",
+          "body_len": 36,
+          "body_tag": "0xB1",
+          "body_2": "0xE3",
+          "body_3": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "label": "B1_props_intelligent_control+face_register+even_wind+single_tuyere+prevent_straight_wind_lr+cvp+new_wind_sense+pre_cool_hot",
+      "tx_hex": "aa 1d ac b1 00 00 00 02 00 03 b1 08 31 00 44 00 4e 00 4f 00 58 00 98 00 aa 00 01 02 0e 0b",
+      "tx_time": "19:17:35",
+      "responses": [
+        {
+          "rx_hex": "aa 2e ac 00 00 00 00 00 02 03 b1 08 31 00 00 00 44 00 00 00 4e 00 00 00 4f 00 00 00 58 00 00 00 98 00 00 00 aa 00 00 00 01 00 00 00 00 3f 7c",
+          "rx_time": "19:17:35",
+          "msg_type": "0x03",
+          "body_hex": "b1 08 31 00 00 00 44 00 00 00 4e 00 00 00 4f 00 00 00 58 00 00 00 98 00 00 00 aa 00 00 00 01 00 00 00 00",
+          "body_len": 35,
+          "body_tag": "0xB1",
+          "body_2": "0x31",
+          "body_3": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "label": "B1_props_body_check+mito_cool_temp+mito_heat_temp+extreme_wind+wind_around+dr_time+remote_control_lock+prevent_super_cool",
+      "tx_hex": "aa 1d ac b1 00 00 00 02 00 03 b1 08 34 02 8d 00 8e 00 4c 00 59 00 8f 00 27 02 49 00 e9 e8",
+      "tx_time": "19:17:37",
+      "responses": [
+        {
+          "rx_hex": "aa 2e ac 00 00 00 00 00 02 03 b1 08 34 00 00 00 8d 00 00 00 8e 00 00 00 4c 00 00 00 59 00 00 00 8f 00 00 00 27 00 00 00 49 00 00 00 00 d6 9f",
+          "rx_time": "19:17:37",
+          "msg_type": "0x03",
+          "body_hex": "b1 08 34 00 00 00 8d 00 00 00 8e 00 00 00 4c 00 00 00 59 00 00 00 8f 00 00 00 27 00 00 00 49 00 00 00 00",
+          "body_len": 35,
+          "body_tag": "0xB1",
+          "body_2": "0x34",
+          "body_3": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "label": "B1_props_filter_level+voice_control+volume_control+cool_heat_amount+ieco_frame+indoor_unit_code+outdoor_unit_code+parent_control",
+      "tx_hex": "aa 1d ac b1 00 00 00 02 00 03 b1 08 09 04 20 00 24 00 90 00 e0 00 ab 00 ac 00 51 00 88 d7",
+      "tx_time": "19:17:38",
+      "responses": [
+        {
+          "rx_hex": "aa 2f ac 00 00 00 00 00 02 03 b1 08 09 00 00 01 00 20 00 00 00 24 00 00 00 90 00 00 00 e0 00 00 00 ab 00 00 00 ac 00 00 00 51 00 00 00 00 81 80",
+          "rx_time": "19:17:39",
+          "msg_type": "0x03",
+          "body_hex": "b1 08 09 00 00 01 00 20 00 00 00 24 00 00 00 90 00 00 00 e0 00 00 00 ab 00 00 00 ac 00 00 00 51 00 00 00 00",
+          "body_len": 36,
+          "body_tag": "0xB1",
+          "body_2": "0x09",
+          "body_3": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "label": "B1_props_temperature_ranges+main_horizontal_guide_strip+sup_horizontal_guide_strip",
+      "tx_hex": "aa 13 ac bf 00 00 00 02 00 03 b1 03 25 02 30 02 31 02 e6 57",
+      "tx_time": "19:17:40",
+      "responses": [
+        {
+          "rx_hex": "aa 1a ac 00 00 00 00 00 02 03 b1 03 25 00 00 00 30 00 00 00 31 00 00 00 00 39 c2",
+          "rx_time": "19:17:41",
+          "msg_type": "0x03",
+          "body_hex": "b1 03 25 00 00 00 30 00 00 00 31 00 00 00 00",
+          "body_len": 15,
+          "body_tag": "0xB1",
+          "body_2": "0x25",
+          "body_3": "0x00"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "label": "device_id_0x07",
+      "tx_hex": "aa 0c ac a0 00 00 00 02 00 07 00 00 9f",
+      "tx_time": "19:17:42",
+      "responses": [
+        {
+          "rx_hex": "aa 2a ac 00 00 00 00 00 02 07 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 41",
+          "rx_time": "19:17:42",
+          "msg_type": "0x07",
+          "body_hex": "ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff",
+          "body_len": 31,
+          "body_tag": "0xFF",
+          "body_2": "0xFF",
+          "body_3": "0xFF"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "label": "group_0x40_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 f7",
+      "tx_time": "19:17:43",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 fc",
+          "rx_time": "19:17:44",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x40"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "label": "group_0x42_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ce 2a",
+      "tx_time": "19:17:45",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 42 00 00 00 00 02 00 00 00 00 01 00 00 00 00 00 00 00 c0 47",
+          "rx_time": "19:17:45",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 42 00 00 00 00 02 00 00 00 00 01 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x42"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "label": "group_0x43_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 43 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 24 d3",
+      "tx_time": "19:17:46",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 03 00 00 00 00 00 08 42 3e 72 b0 b3 00 43 00 00 00 00 25 84",
+          "rx_time": "19:17:48",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 03 00 00 00 00 00 08 42 3e 72 b0 b3 00 43 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x03"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "label": "group_0x46_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 46 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4d a7",
+      "tx_time": "19:17:48",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 46 34 b1 1e 00 10 00 ff 02 01 02 00 00 00 00 00 00 00 d1 1e",
+          "rx_time": "19:17:49",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 46 34 b1 1e 00 10 00 ff 02 01 02 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x46"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "label": "group_0x47_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 47 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 a7 4c",
+      "tx_time": "19:17:50",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 47 00 fc 09 01 06 00 2d 01 00 00 00 00 00 00 00 00 00 21 aa",
+          "rx_time": "19:17:50",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 47 00 fc 09 01 06 00 2d 01 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x47"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "label": "group_0x48_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 48 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 1c d6",
+      "tx_time": "19:17:51",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 48 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2b d9",
+          "rx_time": "19:17:52",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 48 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x48"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "label": "group_0x49_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 49 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f6 fb",
+      "tx_time": "19:17:53",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 49 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 49 ba",
+          "rx_time": "19:17:53",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 49 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x49"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "label": "group_0x4A_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 4a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 d1 1f",
+      "tx_time": "19:17:55",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 4a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ef 13",
+          "rx_time": "19:17:56",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 4a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x4A"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "label": "group_0x4B_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 4b 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3b b4",
+      "tx_time": "19:17:56",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 4b 00 64 00 64 00 00 64 00 f0 00 00 00 00 00 00 00 00 a2 43",
+          "rx_time": "19:17:57",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 4b 00 64 00 64 00 00 64 00 f0 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x4B"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "label": "group_0x4C_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 4c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9f 4f",
+      "tx_time": "19:17:58",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 4c 02 00 0f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2b c4",
+          "rx_time": "19:17:59",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 4c 02 00 0f 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x4C"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "label": "group_0x4D_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 4d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 75 78",
+      "tx_time": "19:18:00",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 4d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 d8 27",
+          "rx_time": "19:18:00",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 4d 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x4D"
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "label": "group_0x4E_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 4e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 52 9a",
+      "tx_time": "19:18:01",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 4e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 7e 80",
+          "rx_time": "19:18:02",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 4e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x4E"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "label": "group_0x4F_v21",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 4f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 b8 33",
+      "tx_time": "19:18:03",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 4f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 1c e1",
+          "rx_time": "19:18:04",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 4f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x4F"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "label": "group_0x41_v21_rt_test",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 e9 10",
+      "tx_time": "19:18:05",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 41 42 5a 00 03 e5 03 48 4d 33 4e 14 00 00 00 00 00 00 8a d0",
+          "rx_time": "19:18:06",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 41 42 5a 00 03 e5 03 48 4d 33 4e 14 00 00 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x41"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "label": "group_0x43_v21_rt_test",
+      "tx_hex": "aa 23 ac 8f 00 00 00 02 00 03 41 21 01 43 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 24 d3",
+      "tx_time": "19:18:06",
+      "responses": [
+        {
+          "rx_hex": "aa 20 ac 00 00 00 00 00 02 03 c1 21 01 03 00 00 00 00 00 08 61 3e 72 ae b3 00 43 00 00 00 00 7d 0f",
+          "rx_time": "19:18:07",
+          "msg_type": "0x03",
+          "body_hex": "c1 21 01 03 00 00 00 00 00 08 61 3e 72 ae b3 00 43 00 00 00 00",
+          "body_len": 21,
+          "body_tag": "0xC1",
+          "body_2": "0x01",
+          "body_3": "0x03"
+        }
+      ]
+    },
+    {
+      "index": "trailing",
+      "label": "unsolicited_trailing",
+      "tx_hex": null,
+      "responses": [
+        {
+          "rx_hex": "aa 1e ac 00 00 00 00 00 02 63 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 d1",
+          "rx_time": "19:18:10",
+          "msg_type": "0x63",
+          "body_hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "body_len": 19,
+          "body_tag": "0x00"
+        }
+      ]
+    },
+    {
+      "index": "pre_drain",
+      "label": "unsolicited_pre_drain",
+      "tx_hex": null,
+      "responses": [
+        {
+          "rx_hex": "aa 2b ac 00 00 00 00 00 02 04 a5 5a 00 00 00 7c 07 ab e3 01 00 00 00 00 00 00 03 00 00 00 00 00 00 5b 4c 0d 00 b7 88 34 00 00 75 73",
+          "rx_time": "19:17:16",
+          "msg_type": "0x04",
+          "body_hex": "a5 5a 00 00 00 7c 07 ab e3 01 00 00 00 00 00 00 03 00 00 00 00 00 00 5b 4c 0d 00 b7 88 34 00 00",
+          "body_len": 32,
+          "body_tag": "0xA5"
+        }
+      ]
+    }
+  ]
+}
