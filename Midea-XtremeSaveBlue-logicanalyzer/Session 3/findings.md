@@ -198,7 +198,7 @@ cycle.
 
 ## 7. Follow-Me cross-bus correlation — **Hypothesis**
 
-Follow-Me (Called bodySense?) is a two-step mechanism on the UART bus (from mill1000/Finding 10):
+Follow-Me (Called bodySense?) is a two-step mechanism on the UART bus (from community protocol research):
 1. **Enable:** `0x40` Set with `body[8] bit 7 = 0x80` (`bodySense`)
 2. **Temperature:** `0x41` extended frame, `body[4]=0x01` (optCommand), `body[5] = T_celsius × 2 + 50`
 

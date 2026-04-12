@@ -104,7 +104,7 @@ optCommand 0x00, 0x02, 0x04, 0x05, 0x06 and queryStat 0x01, 0x03: **all rejected
    compressor cumulative hours, max/min bus voltage.
 
 3. **Group 0x46 (diagnostics) responds on UART** — field mapping
-   cross-validated against mill1000/midea-msmart. Contains lifetime max current, T4 extremes,
+   cross-validated against community protocol research. Contains lifetime max current, T4 extremes,
    compressor/fan flux, d/q axis currents, peak currents.
 
 4. **Group 0x47 responds but is undocumented** — no decoder in Lua or JS app.

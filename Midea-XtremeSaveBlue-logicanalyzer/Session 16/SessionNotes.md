@@ -52,7 +52,7 @@ back with `hi == 0x00` and the data the device has at `(lo, 0x00)`.
 **Implication**: the entire Tier 3 (composites with `hi=0x02`), Tier 4
 (multi-byte `hi=0x02`), and Tier 5 deferred properties (most are
 `hi=0x02` / `hi=0x04`) **cannot be tested on Q11**. The wiring stays
-correct based on mill1000/midea-msmart Finding 9; we just have no live
+correct based on community protocol research; we just have no live
 data to verify against on this hardware. Verification needs an FA-class
 device or a model with the floor-sensor / pre-cool-heat / body-check
 features.
@@ -82,7 +82,7 @@ Populated B1 props (identical OFF and ON):
 ### 4. New finding: `0x1B,0x00` is an undocumented B1 property
 
 Surfaced accidentally via the hi-byte substitution above.
-mill1000/midea-msmart Finding 9 lists only `0x1B,0x02 little_angel`;
+community protocol research lists only `0x1B,0x02 little_angel`;
 no `0x1B,0x00`. The device returns `dl=1 data=[0]` for it. We have one
 data point; no meaning yet. Confidence: **Hypothesis**.
 
@@ -104,8 +104,8 @@ appears:
 | `0x41` | 1 (compressor) | **fully decoded** | n/a — works |
 | `0x42` | 2 (indoor faults) | partially decoded | byte 4=2, byte 9=1 (already wired as `indoor_fault_flags_3` / `indoor_load_flags_2`) |
 | `0x43` → `0x03` (substituted) | 3 (outdoor) | partially decoded | byte 5-12 populated; outdoor compressor freq, EEV, DC bus all wired |
-| `0x46` | 6 | bytes 0-2 wired (lifetime stats) | bytes 4-9 = `[0x10, 0, 0xff, 2, 1, 2]` — **not in mill1000 docs** → skip |
-| `0x47` | 7 | placeholder fields only | bytes 5-11 = `[252, 9, 1, 6, 0, 45, 1]` — **not in mill1000 docs** → skip |
+| `0x46` | 6 | bytes 0-2 wired (lifetime stats) | bytes 4-9 = `[0x10, 0, 0xff, 2, 1, 2]` — **not in community docs** → skip |
+| `0x47` | 7 | placeholder fields only | bytes 5-11 = `[252, 9, 1, 6, 0, 45, 1]` — **not in community docs** → skip |
 | `0x4B` | (page 11 if `& 0x0F`) | unmapped | `[1]=100, [3]=100, [6]=100, [8]=0xf0` — looks like vane position pairs but no decoder spec → skip |
 | `0x4C` | (page 12 if `& 0x0F`) | unmapped | `[0]=2, [2]=15` — unknown → skip |
 
@@ -113,7 +113,7 @@ appears:
 
 Both `direct_subpage_0x01` and `direct_subpage_0x02` returned a 3-byte
 `00 00 00` error response. Q11 firmware does not implement the
-sub-page direct query path that mill1000 documents in §3.1.4.4.
+sub-page direct query path that community protocol docs document in §3.1.4.4.
 
 ### 7. `device_id_0x07` (msg_type=0x07) — not supported
 
@@ -157,11 +157,11 @@ correct OFF state for an idle-cooling unit.
   unverifiable on Q11 firmware (hi-byte stripping, see §2). Their
   confidence stays at Hypothesis.
 - Does NOT chase the four exploratory pages (0x46/0x47/0x4B/0x4C
-  unknown bytes). Without a mill1000 decoder spec for those bytes,
+  unknown bytes). Without a community research decoder spec for those bytes,
   any naming would be guessing.
 
 ## Sources
 
 - Probe data: this directory
 - Glossary fields validated against probe: `protocols/midea/spec/serial_glossary.yaml`
-- Reference: mill1000/midea-msmart (see midea-msmart-mill1000.md, Findings 9 and 11)
+- Reference: community protocol research

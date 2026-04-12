@@ -1,7 +1,16 @@
-# HVAC-shark-dumps
+# blaueis-hvacshark-traces
+
+Part of the [Blaueis](https://github.com/fabcoded) project umbrella.
+Protocol library: [blaueis-libmidea](https://github.com/fabcoded/blaueis-libmidea).
+Dissector + research: [blaueis-hvacshark](https://github.com/fabcoded/blaueis-hvacshark).
+
+> Blaueis is a small glacier in the Bavarian Alps, retreating year by year.
+> Use energy responsibly — climate change is real.
+
+# Capture traces
 
 This repository contains packet capture dumps from HVAC (Heating, Ventilation, and
-Air Conditioning) systems, analysed using the HVAC-shark toolkit.
+Air Conditioning) systems, analysed using the Blaueis protocol toolkit.
 
 ## Companion repository: HVAC-shark
 
