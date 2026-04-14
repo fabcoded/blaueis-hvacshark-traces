@@ -1,0 +1,506 @@
+{
+  "Session 1": {
+    "wifi_frames": 90,
+    "tx_count": 39,
+    "rx_count": 51,
+    "duration_s": 78.76,
+    "by_kind": {
+      "reply_latency": {
+        "n": 32,
+        "min": 51.04,
+        "p5": 51.72,
+        "p50": 56.2,
+        "p95": 60.02,
+        "max": 60.05,
+        "mean": 56.26,
+        "stdev": 2.74
+      },
+      "post_rx_silence": {
+        "n": 32,
+        "min": 13.35,
+        "p5": 13.88,
+        "p50": 460.23,
+        "p95": 4136.47,
+        "max": 8912.39,
+        "mean": 1197.21,
+        "stdev": 1862.23
+      },
+      "command_period": {
+        "n": 38,
+        "min": 135.8,
+        "p5": 138.61,
+        "p50": 635.06,
+        "p95": 9156.59,
+        "max": 15637.92,
+        "mean": 2072.57,
+        "stdev": 3168.6
+      },
+      "post_tx_total": {
+        "n": 38,
+        "min": 101.84,
+        "p5": 109.16,
+        "p50": 598.6,
+        "p95": 9129.3,
+        "max": 15603.55,
+        "mean": 2042.33,
+        "stdev": 3168.9
+      }
+    }
+  },
+  "Session 2": {
+    "wifi_frames": 72,
+    "tx_count": 14,
+    "rx_count": 58,
+    "duration_s": 181.39,
+    "by_kind": {
+      "reply_latency": {
+        "n": 2,
+        "min": 52.1,
+        "p5": 52.37,
+        "p50": 54.83,
+        "p95": 57.28,
+        "max": 57.56,
+        "mean": 54.83,
+        "stdev": 2.73
+      },
+      "post_rx_silence": {
+        "n": 2,
+        "min": 0.96,
+        "p5": 67.78,
+        "p50": 669.21,
+        "p95": 1270.63,
+        "max": 1337.45,
+        "mean": 669.21,
+        "stdev": 668.25
+      },
+      "command_period": {
+        "n": 13,
+        "min": 115.81,
+        "p5": 353.59,
+        "p50": 3843.47,
+        "p95": 43240.68,
+        "max": 67603.84,
+        "mean": 12797.96,
+        "stdev": 17899.09
+      },
+      "post_tx_total": {
+        "n": 13,
+        "min": 103.31,
+        "p5": 329.22,
+        "p50": 3811.18,
+        "p95": 43208.39,
+        "max": 67571.55,
+        "mean": 12766.87,
+        "stdev": 17897.89
+      }
+    }
+  },
+  "Session 3": {
+    "skipped": "no wifi* frames"
+  },
+  "Session 4": {
+    "wifi_frames": 37,
+    "tx_count": 10,
+    "rx_count": 27,
+    "duration_s": 93.42,
+    "by_kind": {
+      "reply_latency": {
+        "n": 2,
+        "min": 52.06,
+        "p5": 52.09,
+        "p50": 52.33,
+        "p95": 52.57,
+        "max": 52.59,
+        "mean": 52.33,
+        "stdev": 0.27
+      },
+      "post_rx_silence": {
+        "n": 2,
+        "min": 0.83,
+        "p5": 0.84,
+        "p50": 0.93,
+        "p95": 1.01,
+        "max": 1.02,
+        "mean": 0.93,
+        "stdev": 0.1
+      },
+      "command_period": {
+        "n": 9,
+        "min": 119.55,
+        "p5": 122.76,
+        "p50": 2892.95,
+        "p95": 31794.62,
+        "max": 39002.31,
+        "mean": 9386.46,
+        "stdev": 12369.92
+      },
+      "post_tx_total": {
+        "n": 9,
+        "min": 87.26,
+        "p5": 90.47,
+        "p50": 2860.66,
+        "p95": 31760.25,
+        "max": 38967.94,
+        "mean": 9355.9,
+        "stdev": 12367.57
+      }
+    }
+  },
+  "Session 5": {
+    "wifi_frames": 24,
+    "tx_count": 4,
+    "rx_count": 20,
+    "duration_s": 56.92,
+    "by_kind": {
+      "reply_latency": {
+        "n": 0
+      },
+      "post_rx_silence": {
+        "n": 0
+      },
+      "command_period": {
+        "n": 3,
+        "min": 3000.14,
+        "p5": 4789.83,
+        "p50": 20897.12,
+        "p95": 20991.97,
+        "max": 21002.51,
+        "mean": 14966.59,
+        "stdev": 8461.67
+      },
+      "post_tx_total": {
+        "n": 3,
+        "min": 2965.76,
+        "p5": 4755.46,
+        "p50": 20862.74,
+        "p95": 20957.59,
+        "max": 20968.13,
+        "mean": 14932.21,
+        "stdev": 8461.67
+      }
+    }
+  },
+  "Session 6": {
+    "wifi_frames": 33,
+    "tx_count": 17,
+    "rx_count": 16,
+    "duration_s": 82.66,
+    "by_kind": {
+      "reply_latency": {
+        "n": 0
+      },
+      "post_rx_silence": {
+        "n": 0
+      },
+      "command_period": {
+        "n": 16,
+        "min": 377.2,
+        "p5": 2272.31,
+        "p50": 4614.55,
+        "p95": 9018.71,
+        "max": 10358.01,
+        "mean": 5163.95,
+        "stdev": 2610.99
+      },
+      "post_tx_total": {
+        "n": 16,
+        "min": 344.91,
+        "p5": 2240.02,
+        "p50": 4582.26,
+        "p95": 8986.42,
+        "max": 10325.71,
+        "mean": 5131.66,
+        "stdev": 2610.99
+      }
+    }
+  },
+  "Session 7": {
+    "wifi_frames": 272,
+    "tx_count": 67,
+    "rx_count": 205,
+    "duration_s": 777.26,
+    "by_kind": {
+      "reply_latency": {
+        "n": 0
+      },
+      "post_rx_silence": {
+        "n": 0
+      },
+      "command_period": {
+        "n": 66,
+        "min": 1462.06,
+        "p5": 1931.3,
+        "p50": 6531.24,
+        "p95": 21254.9,
+        "max": 56604.96,
+        "mean": 11775.81,
+        "stdev": 10652.53
+      },
+      "post_tx_total": {
+        "n": 66,
+        "min": 1429.76,
+        "p5": 1899.0,
+        "p50": 6498.95,
+        "p95": 21220.53,
+        "max": 56572.67,
+        "mean": 11743.24,
+        "stdev": 10651.58
+      }
+    }
+  },
+  "Session 8": {
+    "wifi_frames": 249,
+    "tx_count": 103,
+    "rx_count": 146,
+    "duration_s": 315.8,
+    "by_kind": {
+      "reply_latency": {
+        "n": 77,
+        "min": 50.19,
+        "p5": 50.68,
+        "p50": 55.79,
+        "p95": 59.83,
+        "max": 60.59,
+        "mean": 55.67,
+        "stdev": 3.04
+      },
+      "post_rx_silence": {
+        "n": 76,
+        "min": 13.53,
+        "p5": 13.7,
+        "p50": 568.63,
+        "p95": 7497.18,
+        "max": 14887.69,
+        "mean": 1923.18,
+        "stdev": 2607.3
+      },
+      "command_period": {
+        "n": 102,
+        "min": 103.93,
+        "p5": 139.24,
+        "p50": 1286.26,
+        "p95": 11233.0,
+        "max": 20998.97,
+        "mean": 2918.59,
+        "stdev": 3820.55
+      },
+      "post_tx_total": {
+        "n": 102,
+        "min": 79.98,
+        "p5": 107.57,
+        "p50": 1257.1,
+        "p95": 11213.0,
+        "max": 20964.59,
+        "mean": 2889.14,
+        "stdev": 3821.09
+      }
+    }
+  },
+  "Session 9": {
+    "wifi_frames": 24,
+    "tx_count": 1,
+    "rx_count": 23,
+    "duration_s": 82.17,
+    "by_kind": {
+      "reply_latency": {
+        "n": 0
+      },
+      "post_rx_silence": {
+        "n": 0
+      },
+      "command_period": {
+        "n": 0
+      },
+      "post_tx_total": {
+        "n": 0
+      }
+    }
+  },
+  "Session 10": {
+    "wifi_frames": 508,
+    "tx_count": 224,
+    "rx_count": 284,
+    "duration_s": 688.54,
+    "by_kind": {
+      "reply_latency": {
+        "n": 185,
+        "min": 50.15,
+        "p5": 50.57,
+        "p50": 57.17,
+        "p95": 59.99,
+        "max": 60.42,
+        "mean": 56.47,
+        "stdev": 2.89
+      },
+      "post_rx_silence": {
+        "n": 185,
+        "min": 13.31,
+        "p5": 13.5,
+        "p50": 14.84,
+        "p95": 7622.83,
+        "max": 20983.72,
+        "mean": 2015.79,
+        "stdev": 3204.47
+      },
+      "command_period": {
+        "n": 223,
+        "min": 114.24,
+        "p5": 136.4,
+        "p50": 617.36,
+        "p95": 10581.79,
+        "max": 26573.55,
+        "mean": 3087.49,
+        "stdev": 4649.84
+      },
+      "post_tx_total": {
+        "n": 223,
+        "min": 79.87,
+        "p5": 106.85,
+        "p50": 578.81,
+        "p95": 10547.41,
+        "max": 26541.26,
+        "mean": 3055.5,
+        "stdev": 4649.46
+      }
+    }
+  },
+  "Session 11": {
+    "wifi_frames": 665,
+    "tx_count": 289,
+    "rx_count": 376,
+    "duration_s": 918.25,
+    "by_kind": {
+      "reply_latency": {
+        "n": 225,
+        "min": 50.18,
+        "p5": 51.25,
+        "p50": 56.98,
+        "p95": 60.03,
+        "max": 60.45,
+        "mean": 56.28,
+        "stdev": 2.89
+      },
+      "post_rx_silence": {
+        "n": 225,
+        "min": 13.15,
+        "p5": 13.6,
+        "p50": 457.86,
+        "p95": 7586.13,
+        "max": 18128.85,
+        "mean": 1911.05,
+        "stdev": 3197.32
+      },
+      "command_period": {
+        "n": 288,
+        "min": 113.93,
+        "p5": 138.79,
+        "p50": 713.27,
+        "p95": 12866.12,
+        "max": 38316.91,
+        "mean": 3188.25,
+        "stdev": 4706.95
+      },
+      "post_tx_total": {
+        "n": 288,
+        "min": 79.56,
+        "p5": 108.23,
+        "p50": 692.96,
+        "p95": 12833.83,
+        "max": 38284.61,
+        "mean": 3157.0,
+        "stdev": 4706.8
+      }
+    }
+  },
+  "Session 12": {
+    "wifi_frames": 582,
+    "tx_count": 253,
+    "rx_count": 329,
+    "duration_s": 614.51,
+    "by_kind": {
+      "reply_latency": {
+        "n": 200,
+        "min": 50.21,
+        "p5": 50.74,
+        "p50": 56.48,
+        "p95": 59.96,
+        "max": 60.38,
+        "mean": 55.86,
+        "stdev": 3.04
+      },
+      "post_rx_silence": {
+        "n": 200,
+        "min": 13.32,
+        "p5": 13.76,
+        "p50": 474.3,
+        "p95": 7468.43,
+        "max": 12401.77,
+        "mean": 1521.8,
+        "stdev": 2476.54
+      },
+      "command_period": {
+        "n": 252,
+        "min": 115.18,
+        "p5": 138.88,
+        "p50": 646.41,
+        "p95": 10347.85,
+        "max": 21000.95,
+        "mean": 2438.52,
+        "stdev": 3468.55
+      },
+      "post_tx_total": {
+        "n": 252,
+        "min": 80.81,
+        "p5": 107.57,
+        "p50": 609.43,
+        "p95": 10319.2,
+        "max": 20966.57,
+        "mean": 2408.8,
+        "stdev": 3468.65
+      }
+    }
+  },
+  "Session 13": {
+    "wifi_frames": 31,
+    "tx_count": 8,
+    "rx_count": 23,
+    "duration_s": 137.9,
+    "by_kind": {
+      "reply_latency": {
+        "n": 0
+      },
+      "post_rx_silence": {
+        "n": 0
+      },
+      "command_period": {
+        "n": 7,
+        "min": 1762.92,
+        "p5": 2135.59,
+        "p50": 15894.95,
+        "p95": 48294.14,
+        "max": 60000.95,
+        "mean": 17987.84,
+        "stdev": 18653.01
+      },
+      "post_tx_total": {
+        "n": 7,
+        "min": 1730.63,
+        "p5": 2103.3,
+        "p50": 15875.16,
+        "p95": 48261.22,
+        "max": 59968.66,
+        "mean": 17956.74,
+        "stdev": 18652.74
+      }
+    }
+  },
+  "Session 14": {
+    "skipped": "no session.csv"
+  },
+  "Session 15": {
+    "skipped": "no session.csv"
+  },
+  "Session 16": {
+    "skipped": "no session.csv"
+  }
+}
