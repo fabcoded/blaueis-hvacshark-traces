@@ -4,7 +4,7 @@ analyze_eev_position.py — Extract and cross-validate EEV (electronic expansion
 valve) position from R/T C1 Group 3 responses, correlated with XYE operating
 state from the same capture sessions.
 
-R/T C1 Group 3 fields (serial_protocol.md §4.2.3, mill1000 Finding 11):
+R/T C1 Group 3 fields (serial_protocol.md §4.2.3, external reference Finding 11):
   body[10]  Outdoor DC fan speed    raw × 8 = RPM
   body[11]  EEV actual position     raw × 8 = steps
   body[12]  Outdoor return air temp raw AD value
@@ -17,7 +17,7 @@ XYE fields for correlation:
   C0 byte[14]  T3 outdoor coil           (raw-40)/2 °C
 
 VRF manual (KJR-86S/BK) confirms: check #16 = "EEV opening (actual opening/8)"
-— same ×8 encoding as mill1000 Finding 11.
+— same ×8 encoding as external reference Finding 11.
 
 Usage:
     python analyze_eev_position.py [session_dirs...]

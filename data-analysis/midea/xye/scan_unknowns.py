@@ -37,7 +37,7 @@ or under-documented:
 
   Temperature unit archaeology:
     Check whether raw bytes could represent Fahrenheit or Kelvin instead of Celsius.
-    - Fahrenheit: UART body[15] decimal nibble / mill1000 fahrenheits flag
+    - Fahrenheit: UART body[15] decimal nibble / unit flag
     - Kelvin: Would need offset ~273 for 0C — check if any offset is near 273*2=546
               or if raw values make sense as decikelvin.
     - UART 0xA0 alternative temp frames (OQ-18 in serial_protocol.md)
@@ -491,7 +491,7 @@ def print_fahrenheit_analysis(uart_body15, uart_a0_frames, session_label):
         has_nonzero = any(v != 0 for v in uart_body15.keys())
         if has_nonzero:
             print(f"    -> Non-zero nibbles found: Celsius decimal precision active")
-            print(f"       mill1000 parse_temperature(fahrenheits=False) path is in use")
+            print(f"       parse_temperature(fahrenheits=False) path is in use")
         else:
             print(f"    -> All zeros: no decimal precision (could be either C or F)")
     else:
@@ -562,9 +562,9 @@ def print_offset_origin_analysis():
   - Offset 30 (C1 Group 1): latest protocol extension. Indoor-only optimization
     suggests this was designed after the outdoor sensors were already on offset 50.
 
-  The mill1000 fahrenheits=False parameter suggests the protocol CAN carry Fahrenheit
-  values, but no F-mode has been observed in any capture. US-market units may toggle
-  this flag — worth testing if hardware becomes available.
+  The fahrenheits=False parameter in the parse_temperature path suggests the protocol
+  CAN carry Fahrenheit values, but no F-mode has been observed in any capture.
+  US-market units may toggle this flag — worth testing if hardware becomes available.
 """)
 
 
@@ -729,7 +729,7 @@ def main():
         has_nonzero_nibbles = any(v != 0 for v in agg_body15.keys())
         if has_nonzero_nibbles:
             print(f"  -> Non-zero decimal nibbles present: Celsius mode with decimal precision confirmed")
-            print(f"     (mill1000 parse_temperature fahrenheits=False path is active)")
+            print(f"     (parse_temperature fahrenheits=False path is active)")
         else:
             print(f"  -> All zeros: no decimal precision data. Cannot determine C/F mode from body[15] alone.")
     else:

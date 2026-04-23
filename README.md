@@ -22,7 +22,7 @@ main project:
 Contents of HVAC-shark relevant to this repository:
 - **Wireshark Lua dissector** (`tools/dissector/`) — load this to decode `.pcap` files from this repo
 - **ESP32 / Python live-capture dongle** (`tools/dongle/mid-xye/`) — for live capture over UDP
-- **Protocol documentation** (`protocols/`) — spec, devices, comparison, analysis per manufacturer
+- **Protocol documentation** (`protocols/`) — spec, devices, analysis per manufacturer
 - **`AGENTS.md`** — instructions for AI agents working across both repositories
 
 The offline pcap converter that processes the raw Saleae exports in this repository:
@@ -73,13 +73,13 @@ any external-captures content.
 
 | Folder                          | Hardware                        |
 |---------------------------------|---------------------------------|
-| `Midea-XtremeSaveBlue-logicanalyzer` | Midea extremeSaveBlue split A/C — display board (CN1, CN3, IR), logic analyzer |
-| `Midea-XtremeSaveBlue-dongle`   | Midea extremeSaveBlue split A/C — MFB-C XYE bus, HVAC-shark ESP dongle |
+| `Midea-XtremeSaveBlue-logicanalyzer` | Midea XtremeSaveBlue split A/C — display board (CN1, CN3, IR), logic analyzer |
+| `Midea-XtremeSaveBlue-dongle`   | Midea XtremeSaveBlue split A/C — MFB-C XYE bus, HVAC-shark ESP dongle |
 
 ## Usage
 
 1. Install Wireshark
-2. Install the HVAC-shark dissector from the [HVAC-shark repository](https://github.com/fabcoded/HVAC-shark/tree/master/wireshark_dissectors)
+2. Install the HVAC-shark dissector from the [HVAC-shark repository](https://github.com/fabcoded/HVAC-shark/tree/master/tools/dissector)
 3. Open any `.pcap` file from this repository in Wireshark
 4. Packets are automatically decoded by the dissector
 
@@ -87,6 +87,35 @@ any external-captures content.
 
 These dumps are meant to be used with the latest version of the HVAC-shark Wireshark
 dissector. Please ensure you have the latest version installed for proper decoding.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) — covers the session layout, the external-captures provenance format, the citation rule, and what good capture submissions look like.
+
+## Related projects in this ecosystem
+
+- [blaueis-hvacshark](https://github.com/fabcoded/blaueis-hvacshark) — dissector, live-capture dongle, and protocol specifications (companion tooling).
+- [blaueis-libmidea](https://github.com/fabcoded/blaueis-libmidea) — Python library that consumes the protocol knowledge captured here.
+- [blaueis-ha-midea](https://github.com/fabcoded/blaueis-ha-midea) — Home Assistant integration.
+- [blaueis-esphome](https://github.com/fabcoded/blaueis-esphome) — ESP32 port of the gateway (placeholder).
+
+## Acknowledgments
+
+Captures here trace real Midea HVAC hardware on our workbench. Understanding what's on the wire, however, stands on many shoulders. A deep thank you to the open-source and home-automation community — especially the contributors around **Home Assistant** and the broader maker community — for their protocol research and for publishing it openly.
+
+Community projects whose work informed what these captures are compared against:
+
+- [dudanov/MideaUART](https://github.com/dudanov/MideaUART) — ESP/Arduino library for Midea UART.
+- [chemelli74/midea-local](https://github.com/chemelli74/midea-local) — Python client for the Midea LAN protocol.
+- [reneklootwijk/node-mideahvac](https://github.com/reneklootwijk/node-mideahvac) — Node.js driver for Midea AC.
+- [NeoAcheron/midea-ac-py](https://github.com/NeoAcheron/midea-ac-py) — early Python Midea AC implementation.
+- [wuwentao/midea_ac_lan](https://github.com/wuwentao/midea_ac_lan) — HA integration covering a broad Midea device set.
+- [codeberg.org/xye/xye](https://codeberg.org/xye/xye) — XYE bus reference documentation.
+- Countless forum threads, GitHub issues, and pull requests in the HA and ESPHome communities.
+
+`external-captures/` subfolders carry their own provenance YAML and may be independently licensed — see each subfolder's `capture.yaml`.
+
+If you believe your work is referenced here without proper attribution, or you have licensing concerns, please open an issue — we will respond promptly.
 
 ## For AI agents
 

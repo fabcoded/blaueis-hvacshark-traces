@@ -23,7 +23,7 @@ import sys
 import os
 from pathlib import Path
 
-# ── ucPQTempTab (256-entry Tp NTC lookup from mill1000/midea-msmart) ─────────
+# ── ucPQTempTab (256-entry Tp NTC lookup table) ─────────────────────────────
 UC_PQ_TEMP_TAB = [
     48, 48, 33, 25, 20, 16, 13, 10,  7,  4,   # 0–9
      2,  0,  2,  3,  5,  6,  8,  9, 11, 12,   # 10–19

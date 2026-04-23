@@ -87,7 +87,7 @@ Pairing rule for replies: a TX is paired with the next RX iff that RX starts wit
 
 Implication for a gateway: a 100 ms post-TX pause comfortably contains the reply (57 ms median + 40-byte frame at ~42 ms = ~99 ms total bus occupancy worst-case). No collision risk at current cadence.
 
-Earlier spec note (`protocols/midea/spec/protocol_uart.md:290`): "~50 ms echo delay". Corrected to **~50–60 ms, p50 ≈ 57 ms**. Update that reference at next touch.
+Earlier spec note in `protocols/midea/spec/protocol_uart.md` was "~50 ms echo delay"; corrected to **~50–60 ms, p50 ≈ 57 ms** in this same pass.
 
 ---
 
@@ -167,7 +167,7 @@ Gateway config: `frame_spacing_ms = 150` (raised from 100 on 2026-04-14 — see 
 - **Sessions 5, 6, 7, 9, 13 had zero reply pairs** — mostly small captures with truncated windows; Session 7 is the outlier (272 frames, no pairings) and warrants a separate look.
 - **Clock source.** Logic-analyzer timestamps are the reference; no cross-check against gateway wall-clock. Sub-ms precision assumed correct.
 - **Bus load not tested to failure.** No data on "AC stops responding at X ms post-TX" because no capture pushed below 80 ms.
-- **No captures at gateway-driven cadence.** Every number here is OEM-dongle behaviour. Running the same analysis against a flight-recorder dump from our gateway would close this loop — deferred to when the flight recorder exists.
+- **No captures at gateway-driven cadence.** Every number here is OEM-dongle behaviour. The flight recorder is now live on the gateway; a follow-up pass dumping a ring and running this same analyzer on the extracted frame stream would close the loop. Not yet done.
 
 ---
 
@@ -194,6 +194,6 @@ Stdlib only; no pandas, no pyshark. Reads `session.csv` files under
 1. **Parse Sessions 14/15** — raw Saleae CSV requires a bit-level decoder to recover frame boundaries; current data set skips them.
 2. **Second device.** When another Midea unit becomes available for logic-analyzer capture, re-run and compare — this is the single biggest uncertainty in the current answer.
 3. **Session 7 investigation.** 272 Wi-Fi frames, no reply pairings — bus state / capture quality anomaly worth understanding before trusting that session's numbers.
-4. **Gateway self-timing.** Once the flight recorder (see `blaueis-libmidea/docs/flight_recorder.md`) is built, dump a live ring and run this same analyzer on the extracted frame stream. Closes the loop between "what OEM does" and "what we actually do".
-5. **Controlled cadence experiment.** Gated behind the flight recorder being live: sweep `frame_spacing_ms` downward on the Atelier Midea unit, watch for missed replies. Only way to measure the real floor.
+4. **Gateway self-timing.** Flight recorder is live (`blaueis-libmidea/docs/flight_recorder.md`) — dump a ring via `debug_dump` and feed the UART frames into this analyzer. Closes the loop between "what OEM does" and "what we actually do".
+5. **Controlled cadence experiment.** Sweep `frame_spacing_ms` downward on the Atelier Midea unit, watch the flight-recorder ring for missed replies. Only way to measure the real floor; gateway instrumentation is in place, the experiment itself has not been run.
 6. **Update spec:** `protocols/midea/spec/protocol_uart.md:290` note of "~50 ms echo delay" should be revised to "50–60 ms, p50 ≈ 57 ms, hard ceiling ~60 ms".
