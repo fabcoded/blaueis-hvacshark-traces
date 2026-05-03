@@ -5,7 +5,7 @@ Captures are welcome. This project is CC0 — by submitting a capture you agree 
 ## Before you capture
 
 - For a new device or bus you want to submit, **open an issue first**. We may be able to suggest capture parameters or point you at an existing session that covers the same ground.
-- Read [`AGENTS.md`](https://github.com/fabcoded/HVAC-shark/blob/master/AGENTS.md) in the companion [HVAC-shark](https://github.com/fabcoded/HVAC-shark) repo — it describes capture conventions, confidence labels, and session-layout expectations.
+- Read [`AGENTS.md`](https://github.com/fabcoded/blaueis-hvacshark/blob/master/AGENTS.md) in the companion [blaueis-hvacshark](https://github.com/fabcoded/blaueis-hvacshark) repo — it describes capture conventions, confidence labels, and session-layout expectations.
 
 ## Session layout
 
@@ -29,7 +29,7 @@ Analysis in `findings.md` is documented as **our own observation**. When editing
 - Reference file paths, function names, or line numbers from external implementations.
 - Copy content from external source code — comments, variable names, logic blocks.
 
-A single README-level acknowledgment line names community projects (see [README.md#acknowledgments](README.md#acknowledgments)). Cross-reference to specs in [HVAC-shark](https://github.com/fabcoded/HVAC-shark) by section anchor (e.g. "§3.2 of serial_protocol.md"), not by file path of a third-party project.
+A single README-level acknowledgment line names community projects (see [README.md#acknowledgments](README.md#acknowledgments)). Cross-reference to specs in [blaueis-hvacshark](https://github.com/fabcoded/blaueis-hvacshark) by section anchor (e.g. "§3.2 of serial_protocol.md"), not by file path of a third-party project.
 
 ## External captures
 

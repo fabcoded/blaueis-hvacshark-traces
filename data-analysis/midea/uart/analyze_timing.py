@@ -32,7 +32,7 @@ from typing import Iterator
 BITS_PER_BYTE_9600 = 10.0 / 9600.0  # seconds per byte, 8N1 = 10 bit-times
 REPLY_PAIR_WINDOW_S = 0.5           # max TX→RX gap to consider a pair
 SESSIONS_ROOT = Path(
-    "/workspaces/hvac-shark-dev/HVAC-shark-dumps/Midea-XtremeSaveBlue-logicanalyzer"
+    "/workspaces/hvac-shark-dev/blaueis-hvacshark-traces/Midea-XtremeSaveBlue-logicanalyzer"
 )
 OUT_DIR = Path(__file__).parent
 

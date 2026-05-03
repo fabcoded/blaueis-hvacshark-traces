@@ -121,4 +121,4 @@ optCommand 0x00, 0x02, 0x04, 0x05, 0x06 and queryStat 0x01, 0x03: **all rejected
 ## Probe output
 
 - `2026-04-10_17-53-36_probe.json` — full TX/RX transcript (35 queries)
-  Located in `HVAC-shark/tools/raspi-midea/examples/ac-monitor/`
+  Located in `blaueis-hvacshark/tools/raspi-midea/examples/ac-monitor/`

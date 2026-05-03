@@ -148,4 +148,4 @@ Based on probe results, the following were updated:
 
 - `2026-04-10_18-11-29_probe.json` — Run 1 (27 queries, compressor at ~47Hz)
 - `2026-04-10_18-21-56_probe.json` — Run 2 (27 queries, compressor at ~35Hz)
-  Located in `HVAC-shark/tools/raspi-midea/examples/ac-monitor/`
+  Located in `blaueis-hvacshark/tools/raspi-midea/examples/ac-monitor/`

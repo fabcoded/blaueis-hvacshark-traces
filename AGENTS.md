@@ -1,6 +1,6 @@
-# AGENTS.md — HVAC-shark-dumps *(migrating → `blaueis-hvacshark-traces/`)*
+# AGENTS.md — blaueis-hvacshark-traces
 
-Capture sessions, logic-analyzer exports, analysis scripts, and the offline pcap converter. Data repository — the dissector and the live-capture dongle live in the companion `HVAC-shark/` repo.
+Capture sessions, logic-analyzer exports, analysis scripts, and the offline pcap converter. Data repository — the dissector and the live-capture dongle live in the companion `blaueis-hvacshark/` repo.
 
 Per-session directory layout: `<Device>/Session N/` with `SessionNotes.md` (operator log, ground truth), `findings.md` (analysis + confidence labels), `channels.yaml` (pcap-converter config), `*.csv` (Saleae Logic export), `session.pcap` (converted).
 
@@ -28,6 +28,6 @@ No automated tests. Validation is manual against `SessionNotes.md` ground truth.
 - Do not modify files under `external-captures/` without checking the per-subfolder `capture.yaml` for licence constraints.
 - `SessionNotes.md` files are append-only operator logs — ground truth for validating decoded values. Do not retroactively edit them.
 - On Windows, run scripts with `python -X utf8` to avoid encoding issues on non-ASCII paths.
-- Use the confidence labels from the companion `HVAC-shark/` spec docs when writing `findings.md`.
+- Use the confidence labels from the companion `blaueis-hvacshark/` spec docs when writing `findings.md`.
 
 Directory conventions and analysis-script layout are documented in `README.md` and under `data-analysis/`.

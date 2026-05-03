@@ -227,7 +227,7 @@ periodic alternating flag (all sessions). 0xA0 = both bits = initial trigger.
 0x93 request (bus adapter, t=755.0) → 0x93 response (display, t=755.2) →
 R/T 0xC0 + XYE C0 (t=755.9) → disp-mb (t=756-757).
 
-See `../../HVAC-shark/protocol-analysis/midea/analysis_0x93_extension_board.md`
+See `../../blaueis-hvacshark/protocol-analysis/midea/analysis_0x93_extension_board.md`
 for the full cross-session 0x93 frame analysis.
 
 ---

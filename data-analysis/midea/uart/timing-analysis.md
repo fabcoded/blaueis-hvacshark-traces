@@ -174,7 +174,7 @@ Gateway config: `frame_spacing_ms = 150` (raised from 100 on 2026-04-14 — see 
 ## 9. Reproduction
 
 ```sh
-cd HVAC-shark-dumps/data-analysis/midea/uart
+cd blaueis-hvacshark-traces/data-analysis/midea/uart
 python3 analyze_timing.py
 ```
 

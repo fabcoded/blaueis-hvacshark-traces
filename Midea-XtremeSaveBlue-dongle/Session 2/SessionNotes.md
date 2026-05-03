@@ -1,7 +1,7 @@
 # Session 2 — Follow-Me off/on toggle
 
 - Date: ~January 2025
-- Capture: HVAC-shark ESP dongle, passive XYE sniff via MFB-C adapter
+- Capture: blaueis-hvacshark ESP dongle, passive XYE sniff via MFB-C adapter
 - Controller: KJR-120X wired controller, operated by hand
 - Unit state: running (specific mode not recorded)
 - Weather: cold, January — around freezing but not deep frost

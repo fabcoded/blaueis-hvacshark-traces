@@ -87,7 +87,7 @@ Each session folder contains:
 | `findings.md`     | Analysis output — field encoding tables, confidence levels, open questions, conclusions. |
 | `channels.yaml`   | Channel configuration for the pcap converter (bus types, CSV mapping). |
 | `Session N.csv`   | Pre-decoded Saleae Logic export (input to converter).            |
-| `session.pcap`    | Converted pcap, loadable in Wireshark with the HVAC-shark dissector. |
+| `session.pcap`    | Converted pcap, loadable in Wireshark with the blaueis-hvacshark dissector. |
 
 **Note on cut-off packets**: The first packet(s) in a capture session may be
 truncated or show CRC/checksum errors. This happens when the logic analyser

@@ -330,7 +330,7 @@ def main():
         session_dirs = sys.argv[1:]
     else:
         base = Path(r"c:\Users\fabia\OneDrive\Elektronik und Basteln\HVAC and Heat"
-                     r"\HVAC Shark DEV\HVAC-shark-dumps"
+                     r"\HVAC Shark DEV\blaueis-hvacshark-traces"
                      r"\Midea-XtremeSaveBlue-logicanalyzer")
         session_dirs = []
         for i in range(3, 14):

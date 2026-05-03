@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XYE/HAHB Frame Survey — extract and tabulate XYE frame data from HVAC-shark pcap sessions.
+XYE/HAHB Frame Survey — extract and tabulate XYE frame data from blaueis-hvacshark pcap sessions.
 
 Runs tshark on each session, parses Raw Frame hex from verbose output,
 and produces summary tables of command types, C0/C4 payloads, and D0 broadcasts.
@@ -15,10 +15,10 @@ from collections import defaultdict, Counter
 from pathlib import Path
 
 TSHARK = "C:/Program Files/Wireshark/tshark.exe"
-BASE_LA = Path("C:/Users/fabia/OneDrive/Elektronik und Basteln/HVAC and Heat/HVAC Shark DEV/HVAC-shark-dumps/Midea-XtremeSaveBlue-logicanalyzer")
-BASE_DONGLE = Path("C:/Users/fabia/OneDrive/Elektronik und Basteln/HVAC and Heat/HVAC Shark DEV/HVAC-shark-dumps/Midea-XtremeSaveBlue-dongle")
-BASE_EXT = Path("C:/Users/fabia/OneDrive/Elektronik und Basteln/HVAC and Heat/HVAC Shark DEV/HVAC-shark-dumps/external-captures")
-OUTPUT = Path("C:/Users/fabia/OneDrive/Elektronik und Basteln/HVAC and Heat/HVAC Shark DEV/HVAC-shark-dumps/data-analysis/midea/xye_frame_survey.txt")
+BASE_LA = Path("C:/Users/fabia/OneDrive/Elektronik und Basteln/HVAC and Heat/HVAC Shark DEV/blaueis-hvacshark-traces/Midea-XtremeSaveBlue-logicanalyzer")
+BASE_DONGLE = Path("C:/Users/fabia/OneDrive/Elektronik und Basteln/HVAC and Heat/HVAC Shark DEV/blaueis-hvacshark-traces/Midea-XtremeSaveBlue-dongle")
+BASE_EXT = Path("C:/Users/fabia/OneDrive/Elektronik und Basteln/HVAC and Heat/HVAC Shark DEV/blaueis-hvacshark-traces/external-captures")
+OUTPUT = Path("C:/Users/fabia/OneDrive/Elektronik und Basteln/HVAC and Heat/HVAC Shark DEV/blaueis-hvacshark-traces/data-analysis/midea/xye_frame_survey.txt")
 
 # Command code names
 CMD_NAMES = {

@@ -10,7 +10,7 @@ Three device IDs were observed: `0xB2` (AC control), `0xB9` (installer/setter mo
 
 For the operator action log and raw frame timestamps, see [SessionNotes.md](SessionNotes.md).
 For the full IR protocol reference, see
-[protocol_ir.md](../../../../HVAC-shark/protocol-analysis/protocol_ir.md).
+[protocol_ir.md](../../../../blaueis-hvacshark/protocol-analysis/protocol_ir.md).
 
 ---
 

@@ -1,11 +1,11 @@
-# Midea extremeSaveBlue — HVAC-shark dongle captures
+# Midea extremeSaveBlue — blaueis-hvacshark dongle captures
 
 ## Hardware
 
 - Indoor unit: Midea extremeSaveBlue split AC (second unit, different from display-board captures)
 - Adapter board: MFB-C (converts R/T pin to XYE instead of HAHB)
 - Wired controller: KJR-120X (operated by hand during captures)
-- Capture method: HVAC-shark ESP dongle, passive sniffing XYE bus via RS-485
+- Capture method: blaueis-hvacshark ESP dongle, passive sniffing XYE bus via RS-485
 - Capture date: ~January 2025
 
 ## Capture quality
@@ -27,4 +27,4 @@ The Midea-XtremeSaveBlue-display sessions captured via logic analyzer on the
 display board's CN1 connector (disp-mainboard protocol) and via HAHB RS-485
 (XYE frames decoded from digital waveform). This device folder captures
 XYE frames directly from the MFB-C adapter board's XYE bus using the
-HVAC-shark ESP dongle.
+blaueis-hvacshark ESP dongle.
