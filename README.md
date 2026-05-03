@@ -12,14 +12,14 @@ Dissector + research: [blaueis-hvacshark](https://github.com/fabcoded/blaueis-hv
 This repository contains packet capture dumps from HVAC (Heating, Ventilation, and
 Air Conditioning) systems, analysed using the Blaueis protocol toolkit.
 
-## Companion repository: HVAC-shark
+## Companion repository: blaueis-hvacshark
 
 The tools to capture, convert, and dissect the data in this repository live in the
 main project:
 
-**[HVAC-shark](https://github.com/fabcoded/HVAC-shark)**
+**[blaueis-hvacshark](https://github.com/fabcoded/blaueis-hvacshark)**
 
-Contents of HVAC-shark relevant to this repository:
+Contents of blaueis-hvacshark relevant to this repository:
 - **Wireshark Lua dissector** (`tools/dissector/`) — load this to decode `.pcap` files from this repo
 - **ESP32 / Python live-capture dongle** (`tools/dongle/mid-xye/`) — for live capture over UDP
 - **Protocol documentation** (`protocols/`) — spec, devices, analysis per manufacturer
@@ -74,18 +74,18 @@ any external-captures content.
 | Folder                          | Hardware                        |
 |---------------------------------|---------------------------------|
 | `Midea-XtremeSaveBlue-logicanalyzer` | Midea XtremeSaveBlue split A/C — display board (CN1, CN3, IR), logic analyzer |
-| `Midea-XtremeSaveBlue-dongle`   | Midea XtremeSaveBlue split A/C — MFB-C XYE bus, HVAC-shark ESP dongle |
+| `Midea-XtremeSaveBlue-dongle`   | Midea XtremeSaveBlue split A/C — MFB-C XYE bus, blaueis-hvacshark ESP dongle |
 
 ## Usage
 
 1. Install Wireshark
-2. Install the HVAC-shark dissector from the [HVAC-shark repository](https://github.com/fabcoded/HVAC-shark/tree/master/tools/dissector)
+2. Install the blaueis-hvacshark dissector from the [blaueis-hvacshark repository](https://github.com/fabcoded/blaueis-hvacshark/tree/master/tools/dissector)
 3. Open any `.pcap` file from this repository in Wireshark
 4. Packets are automatically decoded by the dissector
 
 ## Compatibility
 
-These dumps are meant to be used with the latest version of the HVAC-shark Wireshark
+These dumps are meant to be used with the latest version of the blaueis-hvacshark Wireshark
 dissector. Please ensure you have the latest version installed for proper decoding.
 
 ## Contributing
@@ -120,7 +120,7 @@ If you believe your work is referenced here without proper attribution, or you h
 ## For AI agents
 
 AI agents working in this repository should follow the instructions in
-[AGENTS.md](https://github.com/fabcoded/HVAC-shark/blob/master/AGENTS.md)
-in the companion HVAC-shark repository. Unless otherwise advised by the repository
+[AGENTS.md](https://github.com/fabcoded/blaueis-hvacshark/blob/master/AGENTS.md)
+in the companion blaueis-hvacshark repository. Unless otherwise advised by the repository
 owner, `AGENTS.md` is the authoritative guide for working conventions, protocol
 documentation standards, and confidence labelling.
