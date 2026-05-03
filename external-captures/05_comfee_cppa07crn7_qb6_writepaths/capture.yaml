@@ -1,0 +1,186 @@
+# Comfee CPPA-07CRN7-QB6 — Buzzer / display write-paths probe
+# Date: 2026-05-03
+# Companion to: ../03_comfee_cppa07crn7_qb6_modewalk/      (panel mode walk)
+#                ../04_comfee_cppa07crn7_qb6_querycoverage/ (query response taxonomy)
+#
+# Hardware:
+#   Indoor unit: Comfee CPPA-07CRN7-QB6 (7000 BTU portable split, cooling-only)
+#   Capture method: serial tap on the device's UART bus; 21 frames sent
+#                   during a single supervised live-write session, with
+#                   halt-and-wait between each frame for the operator to
+#                   confirm audible/visual ground-truth against
+#                   pre-announced expectations.
+#
+# Pacing rules:
+#   - ≥6 s between mode/field changes (cmd_0x40 set-state)
+#   - Single-shot frames; no batching
+#   - ×2 reps for every audible/visual finding
+#   - Pre-announced expected outcome before each send
+#
+# Probe goal: characterise the buzzer property (cap 0x022C) — does writing
+# 0x022C=0 silence per-frame beep flags in cmd_0x40 set-state, and is the
+# gate global across all audio paths (including the cmd_0x41/beep
+# display-toggle frame)?
+#
+# Pre-flight: every frame in the plan was pre-computed and decode-
+# roundtrip-verified offline before the live session. Live execution
+# emitted each frame on the device's UART interface and confirmed the
+# wire bytes matched the pre-computed reference byte-for-byte.
+
+device:
+  brand: Comfee
+  model: CPPA-07CRN7-QB6
+  family: Midea AC
+  type_byte: 0xAC
+  model_number: 44204
+  manufacturer_code: "0000"
+  cap_fingerprint:
+    has_0x022C_BUZZER: true
+    has_0x0224_DISPLAY_CONTROL: true
+    notes: "B5 cap walk in 03_modewalk; 0x0224 write rejects with status=0x10 on this mainboard."
+
+# ── Phase plan ──────────────────────────────────────────────────────────
+# Phase 0   — baseline reads (B1 + C0)
+# Phase R   — re-validation matrix (R1/R2/R3) for B0 0x022C value vs transition
+#             (triggered by surprise on the very first 0x022C=1 write)
+# Phase B   — buzzer prop=0, can it silence per-frame beep on real state changes?
+# Phase C   — buzzer prop=1, does it restore beep on real state changes?
+# Phase D   — display-toggle × buzzer matrix (the "is the gate global?" question)
+# Phase 3   — separation read (C0 latch independence proof)
+# Phase E   — restore: re-arm buzzer, power off
+
+# ── Frame audit table (predict / observed) ──────────────────────────────
+# Every frame had a pre-announced expectation. "Observed" is the operator's
+# ground-truth confirmation by ear and eye at the device.
+
+frame_audit:
+  - phase: phase_0
+    step: "F1 B1 read 0x022C, 0x0224"
+    predict: "no audible/visual change"
+    observed: "buzzer=0, display=empty payload"
+    note: "Baseline state — last session left buzzer=0; device was OFF cool/22"
+
+  - phase: phase_0
+    step: "F2 C0 status query"
+    predict: "no audible/visual change"
+    observed: "power=OFF cool/auto/22, body[15]=0x00 latch enabled"
+
+  - phase: phase_0
+    step: "F3 B0 set 0x022C=1 (Phase 1a initial attempt)"
+    predict: "no audible (assumed propagation lag from prior session)"
+    observed: "BEEP — surprise; halted to investigate ghost processes / re-validate"
+    note: "This surprise drove the R1/R2/R3 re-validation matrix. Prior session's '30-60s propagation lag' interpretation was the misleading frame."
+
+  - phase: R1
+    step: "F3 B0 0x022C=1 (idempotent 1→1)"
+    predict: "BEEP if any-write hyp; SILENT if transition-only or external"
+    observed: "BEEP — rules out transition-only and external"
+
+  - phase: R2
+    step: "F4 B0 0x022C=0 (transition 1→0)"
+    predict: "BEEP if any-write; SILENT if external"
+    observed: "SILENT — falsifies any-write hypothesis"
+
+  - phase: R3
+    step: "F4 B0 0x022C=0 (idempotent 0→0)"
+    predict: "SILENT if value-dependent"
+    observed: "SILENT — confirms value-dependent: BEEP iff value=1"
+
+  - phase: phase_B
+    step: "B1 F6 set-state cool/22 power=on (real off→on, beep flag=on)"
+    predict: "SILENT (buzzer prop=0 should gate per-frame beep)"
+    observed: "SILENT + AC starts running"
+
+  - phase: phase_B
+    step: "B2 F7 set-state temp=23 (real +1°C, beep=on)"
+    predict: "SILENT"
+    observed: "SILENT"
+
+  - phase: phase_B
+    step: "B3 F6 set-state temp=22 (real -1°C, ×2 rep, beep=on)"
+    predict: "SILENT (rep)"
+    observed: "SILENT"
+
+  - phase: phase_C
+    step: "C0 F3 B0 0x022C=1 (transition 0→1, re-arm buzzer)"
+    predict: "BEEP (arming confirmation)"
+    observed: "BEEP"
+
+  - phase: phase_C
+    step: "C2 F7 set-state temp=23 (beep=on)"
+    predict: "BEEP (per-frame beep should now fire)"
+    observed: "BEEP"
+
+  - phase: phase_C
+    step: "C3 F6 set-state temp=22 (×2 rep, beep=on)"
+    predict: "BEEP"
+    observed: "BEEP"
+
+  - phase: phase_D
+    step: "D1 F5 cmd_0x41/beep display-toggle (buzzer=1)"
+    predict: "BEEP + LED off (display latch flips)"
+    observed: "BEEP + LED off"
+
+  - phase: phase_D
+    step: "D2 F5 cmd_0x41/beep display-toggle (buzzer=1, rep)"
+    predict: "BEEP + LED on"
+    observed: "BEEP + LED on"
+
+  - phase: phase_D
+    step: "D3 F4 B0 0x022C=0 (transition 1→0)"
+    predict: "SILENT"
+    observed: "SILENT"
+
+  - phase: phase_D
+    step: "D4 F5 cmd_0x41/beep display-toggle (buzzer=0) — open Q"
+    predict: "SILENT if global gate; BEEP if separate audio path"
+    observed: "SILENT + LED off — global gate confirmed"
+
+  - phase: phase_D
+    step: "D5 F5 cmd_0x41/beep display-toggle (buzzer=0, rep)"
+    predict: "SILENT (rep)"
+    observed: "SILENT + LED on"
+
+  - phase: phase_3
+    step: "F2 C0 status query (separation read)"
+    predict: "body[15]=0x00, latch unchanged across the buzzer transitions"
+    observed: "body[15]=0x00 — latch independent of buzzer property"
+
+  - phase: phase_3
+    step: "F1 B1 read 0x022C, 0x0224"
+    predict: "buzzer=0, display=empty payload"
+    observed: "buzzer=0, display=empty"
+
+  - phase: phase_E
+    step: "E1 F3 B0 0x022C=1 (restore, transition 0→1)"
+    predict: "BEEP (arming)"
+    observed: "BEEP"
+
+  - phase: phase_E
+    step: "E2 F8 set-state power=off (cleanup, beep=on with buzzer=1)"
+    predict: "BEEP (per-frame beep on power transition)"
+    observed: "(not listened — device powered off as expected)"
+
+# ── Findings (one-line summary) ─────────────────────────────────────────
+findings:
+  - "B0 0x022C value=1 emits a buzzer-arming beep regardless of transition; value=0 is always silent."
+  - "0x022C=0 is a global beep gate: silences per-frame beep in cmd_0x40 AND implicit beep in cmd_0x41/beep display-toggle."
+  - "Display latch (C0 body[15] bits[6:4]) and buzzer property are independent surfaces — neither cross-affects the other."
+  - "B0 0x0224 DISPLAY_CONTROL writes are rejected on this mainboard with status=0x10 (from prior session). Display only writable via cmd_0x41/beep."
+  - "Hardware ACK is immediate commit on `0x022C` writes — verified by the audible buzzer-arming response firing at write-time."
+
+# ── File index ──────────────────────────────────────────────────────────
+files:
+  capture.yaml: "this file"
+  findings.md: "narrative writeup with predicate/observed matrix and design implications"
+  frames.jsonl: "21 annotated records (one per send/recv pair) with phase, step, predict, observed"
+  writepaths_full.pcap: "all 42 wire frames (21 TX + 21 RX) in chronological order"
+  phase_0.pcap: "Phase 0 baseline reads + initial F3 surprise"
+  R1.pcap: "F3 idempotent 1→1 — disambiguates any-write vs transition-only vs external"
+  R2.pcap: "F4 transition 1→0 — discriminates A from C"
+  R3.pcap: "F4 idempotent 0→0 — confirms value-dependent semantics"
+  phase_B.pcap: "buzzer=0 silences cmd_0x40 per-frame beep on real state changes"
+  phase_C.pcap: "buzzer=1 restores cmd_0x40 per-frame beep"
+  phase_D.pcap: "display-toggle × buzzer matrix; D4/D5 is the global-gate proof"
+  phase_3.pcap: "separation reads — display latch independent of buzzer property"
+  phase_E.pcap: "restore — re-arm buzzer + power off"
