@@ -1,0 +1,172 @@
+# Comfee CPPA-07CRN7-QB6 — Operator-driven panel-state walk
+# Date: 2026-05-03
+#
+# Hardware:
+#   Indoor unit: Comfee CPPA-07CRN7-QB6 (7000 BTU portable split, cooling-only,
+#                budget tier — Comfee is a Midea sub-brand)
+#   Capture method: serial tap on the device's UART bus; operator manually
+#                   flipped panel state, B1/C0/A1 query frames recorded per state.
+#
+# Protocol family: Midea AC 0xAC, model_number 44204. Lua plugin shared
+# byte-for-byte with the Atelier Midea Xtreme Save Blue platform — same Wi-Fi
+# stick firmware family — but the AC mainboard cap fingerprint differs
+# substantially (see findings.md).
+#
+# Per-state structure: 3× B1 query, 5× C0 query, 3× A1 query at ≥2s pacing.
+# Frames are LAN-format Midea wire frames (10-byte header).
+#
+# Naming: session_NN.pcap holds frames for that state in chronological order.
+# frames.jsonl is the same data in jsonl form with state/query labels.
+
+device:
+  brand: Comfee
+  model: CPPA-07CRN7-QB6
+  family: Midea AC
+  type_byte: 0xAC
+  model_number: 44204
+  manufacturer_code: "0000"
+  cooling_only: true
+  modes_observed: [auto, cool, dry, fan_only]
+  notes: >
+    Cap fingerprint is the only reliable identity. SN8 in the Wi-Fi stick is
+    a stick-firmware code, not an AC mainboard identifier — devices with
+    different mainboards can share SN8 if they share the stick build.
+
+cap_fingerprint:
+  basic_b5_payload:    "1402010015020102 1e02010017020102 1a02010210020104 25020720 3c203c203c00 24020101"
+  additional_b5_payload: "1f0201002c0201018c000100"
+  decoded:
+    modes: cool+dry+auto (no heat)
+    swing: none
+    fan_speed: low+high+auto only (no medium, no silent, no custom)
+    eco: false
+    turbo: false
+    anion: false
+    self_clean: false
+    freeze_protection: false
+    fahrenheit_supported: false
+    breeze_away: false
+    rate_select: false
+    swing_angle_h: false
+    swing_angle_v: false
+    energy_stats: false
+    aux_heat: false
+    humidity: false
+    filter_notice: true
+    filter_clean: false
+    buzzer: true
+    display_control: true
+    temperatures: { cool: [16,30], auto: [16,30], heat: [16,30], decimals: false }
+    unknown_cap_0x008C: present-but-zero
+
+sessions:
+
+  - session: off_baseline
+    session_index: "01"
+    description: Baseline with unit powered off (panel switch).
+    context: { power: off, mode: -, fan: -, display: on, sound: on, setpoint_c: - }
+    frames_pcap: session_01.pcap
+    frames_count: 11
+
+  - session: cool_auto_disp_on_22
+    session_index: "02"
+    description: First cool-mode capture, fan in auto, display+sound on, setpoint 22 °C.
+    context: { power: on, mode: cool, fan: auto, display: on, sound: on, setpoint_c: 22 }
+    frames_pcap: session_02.pcap
+    frames_count: 11
+    observed:
+      c0_byte_2: "0x46  → mode high-nibble 0x4 (cool), low nibble 0x6 (22 °C = 16+6)"
+      c0_byte_3: "0x66  → fan-speed encoding for auto"
+
+  - session: cool_low_disp_on_22
+    session_index: "03"
+    description: Cool, fan=low, others unchanged.
+    context: { power: on, mode: cool, fan: low, display: on, sound: on, setpoint_c: 22 }
+    frames_pcap: session_03.pcap
+    frames_count: 11
+    observed:
+      c0_byte_3: "0x28  → low fan"
+
+  - session: cool_high_disp_on_22
+    session_index: "04"
+    description: Cool, fan=high, others unchanged.
+    context: { power: on, mode: cool, fan: high, display: on, sound: on, setpoint_c: 22 }
+    frames_pcap: session_04.pcap
+    frames_count: 11
+    observed:
+      c0_byte_3: "0x64  → high fan"
+
+  - session: cool_disp_off_sound_on
+    session_index: "05"
+    description: Display LED toggled OFF via dedicated panel button. Sound stays ON.
+    context: { power: on, mode: cool, fan: high, display: off, sound: on, setpoint_c: 22 }
+    frames_pcap: session_05.pcap
+    frames_count: 11
+    observed:
+      note: >
+        Panel exposes display LED and sound as SEPARATE buttons. Display-off
+        flipped a bit in C0; B1 was unchanged. (Sound bit lives on B1 — see
+        session_11.)
+
+  - session: cool_setpoint_min
+    session_index: "06"
+    description: Setpoint dropped to minimum (16 °C).
+    context: { power: on, mode: cool, fan: auto, display: on, sound: on, setpoint_c: 16 }
+    frames_pcap: session_06.pcap
+    frames_count: 11
+    observed:
+      c0_byte_2: "0x40  → low nibble 0x0 = 16 °C"
+
+  - session: cool_setpoint_max
+    session_index: "07"
+    description: Setpoint raised to maximum (30 °C). Operator confirmed audible
+                 compressor stop on transition (room <30 °C, no demand).
+    context: { power: on, mode: cool, fan: auto, display: on, sound: on, setpoint_c: 30 }
+    frames_pcap: session_07.pcap
+    frames_count: 11
+    observed:
+      c0_byte_2: "0x4e  → low nibble 0xE = 30 °C"
+
+  - session: dry_mode
+    session_index: "08"
+    description: Dry mode (dehumidify). Setpoint retained from previous (30 °C).
+    context: { power: on, mode: dry, fan: auto, display: on, sound: on, setpoint_c: 30 }
+    frames_pcap: session_08.pcap
+    frames_count: 11
+    observed:
+      c0_byte_2: "0x6e  → mode high-nibble 0x6 (dry)"
+
+  - session: auto_mode
+    session_index: "09"
+    description: Auto mode. Notable — B1 first response gained a non-zero byte
+                 (0x30 in tail) only seen in this mode.
+    context: { power: on, mode: auto, fan: auto, display: on, sound: on, setpoint_c: 30 }
+    frames_pcap: session_09.pcap
+    frames_count: 11
+    observed:
+      c0_byte_2: "0x2e  → mode high-nibble 0x2 (auto), 30 °C"
+      b1_first_response: "tail bytes 00 30 00 — auto-only field"
+
+  - session: fan_only_mode
+    session_index: "10"
+    description: Fan-only mode (no cooling). Mode encoding 0xA0 in C0 high-nibble.
+    context: { power: on, mode: fan_only, fan: auto, display: on, sound: on, setpoint_c: 30 }
+    frames_pcap: session_10.pcap
+    frames_count: 11
+    observed:
+      c0_byte_2: "0xae  → mode high-nibble 0xA (fan-only)"
+
+  - session: sound_off_display_on
+    session_index: "11"
+    description: Sound toggled OFF via dedicated panel button. Display stays ON.
+                 Captures the sound bit in isolation.
+    context: { power: on, mode: fan_only, fan: auto, display: on, sound: off, setpoint_c: 30 }
+    frames_pcap: session_11.pcap
+    frames_count: 11
+    observed:
+      note: >
+        Sound on this device is exposed via a B1 property, not a C0 state bit.
+        B1 first response tail flipped from 00 00 00 00 (all prior states) to
+        01 2c 02 — three new non-zero bytes. C0 was unchanged. This is the
+        protocol-level evidence that display and sound are independent
+        controls on the CPPA-07CRN7 mainboard.

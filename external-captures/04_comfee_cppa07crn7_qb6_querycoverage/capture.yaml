@@ -1,0 +1,151 @@
+# Comfee CPPA-07CRN7-QB6 — Query coverage sweep across three states
+# Date: 2026-05-03
+# Companion to: ../03_comfee_cppa07crn7_qb6_modewalk/  (same hardware, panel walk)
+#
+# Hardware:
+#   Indoor unit: Comfee CPPA-07CRN7-QB6 (7000 BTU portable split, cooling-only)
+#   Capture method: serial tap on the device's UART bus; for each state,
+#                   a single set-state frame placed the unit into the
+#                   target state, then 14 query bodies + querySN were
+#                   emitted in sequence to characterise the device's
+#                   response surface.
+#
+# Pacing: ≥7 s between state-changing set frames; ≥2 s between repeated query
+# sends (per AC pacing rules — no compressor short-cycling observed).
+#
+# Three states walked:
+#   - state_A.pcap  → A_off            (power off, mode cool, fan auto, temp 22)
+#   - state_B.pcap  → B_cool_auto_22   (power on, mode cool, fan auto, temp 22)
+#   - state_C.pcap  → C_fanonly_auto   (power on, mode fan-only, fan auto, temp 22)
+# coverage_full.pcap is all three concatenated in chronological order.
+#
+# coverage.jsonl carries the same data with state labels, verdict, and note
+# fields per record. Verdict was assigned by cross-state body comparison:
+#   silent     — no reply
+#   exception  — frame_type 0x06 / 0x0A
+#   stub       — same body across all states, content effectively all-zero
+#   static     — same body across all states, content non-zero (config/caps)
+#   live       — body content varies meaningfully with state
+
+device:
+  brand: Comfee
+  model: CPPA-07CRN7-QB6
+  family: Midea AC
+  type_byte: 0xAC
+  model_number: 44204
+  manufacturer_code: "0000"
+
+# Frame builder layout used for set-state writes (cmd_0x40, msg_type 0x02).
+# Body layout: body[0]=0x40, body[1]=control|beep|power, body[2]=temp+mode,
+# body[3]=fan, body[4..6]=timer, body[7]=swing, etc.
+set_state_layout:
+  body_byte_0: cmd_id (0x40)
+  body_byte_1: control_source (0x02) | beep (0x40 if on) | power (0x01 if on)
+  body_byte_2: (temp - 16) low-nibble | mode high-3-bits (auto=1, cool=2, dry=3, fan_only=5)
+  body_byte_3: fan_speed (auto=102, low=40, medium=60, high=100, silent=20)
+  body_bytes_4_6: timer (0x7F 0x7F 0x00)
+  body_byte_7: swing (0x30 base | swing-flags)
+  body_byte_8: follow_me + alt_turbo
+  body_byte_9: eco / purifier / aux flags
+  body_byte_10: sleep / turbo / fahrenheit flags
+
+states:
+
+  - state: A_off
+    description: Power off (still mode=cool, fan=auto, temp=22 retained internally).
+    pcap: state_A.pcap
+    set_frame_tx: aa24ac00000000000002404246667f7f00300000000000000000000000000000000001468b
+    set_frame_rx: aa23ac00000000000802c00046667f7f003000000063ff0000000000000000000087aef6
+    queries_count: 15
+
+  - state: B_cool_auto_22
+    description: Power on, mode cool, fan auto, setpoint 22 °C.
+    pcap: state_B.pcap
+    set_frame_tx: aa24ac00000000000002404346667f7f00300000000000000000000000000000000001ebe5
+    set_frame_rx: aa23ac00000000000802c00146667f7f003000000063ff00000000000000000000454a9b
+    queries_count: 15
+
+  - state: C_fanonly_auto
+    description: Power on, mode fan-only, fan auto.
+    pcap: state_C.pcap
+    set_frame_tx: aa24ac000000000000024043a6667f7f003000000000000000000000000000000000013838
+    set_frame_rx: aa23ac00000000000802c001a6667f7f003000000062ff00000000000000000000457511
+    queries_count: 15
+
+# Body coverage matrix (cross-state classification — see findings.md)
+coverage_matrix:
+  cmd_0x41:
+    msg_type: 0x03
+    body_first_bytes: "41 81 00 ff 03 ff 00 02"
+    verdict: live
+    note: "C0 status. Power bit, mode high-nibble, temp low-nibble all reflect state."
+  cmd_0x41_ext:
+    msg_type: 0x03
+    body_first_bytes: "41 81 00 ff 03 ff 00 02 00 00 00 00"
+    verdict: live
+    note: "Same C0 content as cmd_0x41 — functionally redundant on this device."
+  cmd_0x41_group0:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 40"
+    verdict: stub
+    note: "All-zero body — runtime timers not populated."
+  cmd_0x41_group1:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 41"
+    verdict: live
+    note: "Compressor/temp word — bytes 7-9 carry stage flag + ambient/coil temps."
+  cmd_0x41_group2:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 42"
+    verdict: live
+    note: "Status flags. byte 4 = 0x00 (off) → 0xFF (running). byte 11 = 0x40 only when running. Useful runtime-active signal."
+  cmd_0x41_group3:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 43"
+    verdict: live
+    note: "Weak — byte 9 = 0x04 in cool, 0x00 in off/fan-only. Cooling-active indicator."
+  cmd_0x41_group4_power:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 44"
+    verdict: stub
+    note: "All-zero body — energy stats not populated (no ENERGY cap on this mainboard)."
+  cmd_0x41_group5:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 45"
+    verdict: mode_dependent
+    note: "byte 12 = 0x07 (cool/off) vs 0x08 (fan-only). Single-byte mode echo."
+  cmd_0x41_group6:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 46"
+    verdict: stub
+    note: "All-zero body."
+  cmd_0x41_group7:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 47"
+    verdict: stub
+    note: "All-zero body."
+  cmd_0x41_group11:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 4b"
+    verdict: static
+    note: "Non-zero constant body — config-shaped data (likely gear/fan-curve)."
+  cmd_0x41_group12:
+    msg_type: 0x03
+    body_first_bytes: "41 21 01 4c"
+    verdict: static
+    note: "Non-zero constant body — config-shaped data."
+  cmd_0xb5_simple:
+    msg_type: 0x03
+    body_first_bytes: "b5 01 00"
+    verdict: static
+    note: "Cap fingerprint basic page (8 caps). Runtime-invariant by definition."
+  cmd_0xb5_extended:
+    msg_type: 0x03
+    body_first_bytes: "b5 01 01 01"
+    verdict: static
+    note: "Cap fingerprint additional page (3 caps)."
+  query_sn:
+    msg_type: 0x07
+    body_first_bytes: "(empty body)"
+    verdict: silent
+    note: "No reply on any state. msg_type=0x07 not honoured by this device on this transport."
